@@ -1,10 +1,6 @@
-import { Inter as FontSans } from "next/font/google";
 import "./globals.css";
-
-const fontSans = FontSans({
-  subsets: ["latin"],
-  variable: "--font-sans",
-});
+import Header from "../components/Header";
+import Footer from "../components/Footer";
 
 export default function RootLayout({
   children,
@@ -13,7 +9,15 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ja">
-      <body className={fontSans.variable}>{children}</body>
+      <head>
+        <title>猫と京都と酒</title>
+      </head>
+      <body className="font-mono">
+        <Header />
+        <main className="pt-16 m-1/3"></main>
+        {children}
+        <Footer />
+      </body>
     </html>
   );
 }
