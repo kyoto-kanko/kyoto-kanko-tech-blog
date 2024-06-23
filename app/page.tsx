@@ -1,18 +1,12 @@
-import { Terminal } from "lucide-react";
 import Image from "next/image";
 import Terminals from "../components/Terminals";
+import ArticleDescription from "../components/ArticleDescription";
 
 export default function Home() {
   return (
-    <div className="container mx-auto">
+    <div>
       <Terminals />
-      <h2 className="flex flex-row flex-nowrap items-center mt-24">
-        <span className="flex-grow block border-t border-black"></span>
-        <span className="flex-none block mx-4 px-4 py-2.5 text-xl rounded leading-none font-medium bg-black text-white">
-          新着の記事一覧
-        </span>
-        <span className="flex-grow block border-t border-black"></span>
-      </h2>
+      <ArticleDescription title="新着の記事一覧" />
       <div className="flex flex-wrap justify-center">
         {articles.map((article) => (
           <div
