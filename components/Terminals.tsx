@@ -8,6 +8,7 @@ const Terminal = () => {
 
   const [index, setIndex] = useState(0);
 
+  // 全体の記事数とかを表示
   useEffect(() => {
     if (index < text.length) {
       const interval = setInterval(() => {

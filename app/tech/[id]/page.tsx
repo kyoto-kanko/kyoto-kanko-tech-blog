@@ -1,12 +1,11 @@
 import React from "react";
 import { createClient } from "microcms-js-sdk";
-import parse from "html-react-parser";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 
 const client = createClient({
-  serviceDomain: "",
-  apiKey: "",
+  serviceDomain: "il685n1911",
+  apiKey: "BOe3OF4nQZ2kPoGFebS4GvAr0t7ewnvDXALm",
 });
 
 async function fetchBlogs(id: string) {
