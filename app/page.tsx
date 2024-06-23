@@ -15,7 +15,10 @@ export default function Home() {
       </h2>
       <div className="flex flex-wrap justify-center">
         {articles.map((article) => (
-          <div key={article.title} className="shadow-lg m-4 w-1/4">
+          <div
+            key={article.title}
+            className="rounded-lg shadow-md transition-transform hover:shadow-lg hover:translate-y-1 m-4 w-1/4"
+          >
             <Image
               src="https://blog-imgs-43-origin.fc2.com/v/o/c/vocawallpaper/2012090808035339cs.jpg"
               alt="Sunset in the mountains"
