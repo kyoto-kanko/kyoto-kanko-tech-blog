@@ -20,7 +20,8 @@ export default async function Home() {
 
   return (
     <div>
-      <ArticleDescription title="新着記事一覧" />
+      <Terminals />
+      <ArticleDescription title="新着記事" />
       <div className="flex items-center flex-col">
         {blogs.map((blog: any) => (
           <a
@@ -29,7 +30,7 @@ export default async function Home() {
             className="my-2 flex w-3/4 bg-white border shadow hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700 relative"
           >
             <Image
-              className="p-2 rounded-xl"
+              className="p-2 rounded-xl w-80 h-48"
               src={blog.eyecatch.url}
               alt="blog image"
               width={300}

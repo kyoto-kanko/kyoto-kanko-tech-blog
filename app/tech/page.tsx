@@ -2,6 +2,15 @@ import { createClient } from "microcms-js-sdk";
 import React from "react";
 import ArticleDescription from "../../components/ArticleDescription";
 import Image from "next/image";
+import {
+  Pagination,
+  PaginationContent,
+  PaginationEllipsis,
+  PaginationItem,
+  PaginationLink,
+  PaginationNext,
+  PaginationPrevious,
+} from "@/components/ui/pagination";
 
 const client = createClient({
   serviceDomain: "il685n1911",
@@ -29,7 +38,7 @@ export default async function Page() {
             className="my-2 flex w-3/4 bg-white border shadow hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700 relative"
           >
             <Image
-              className="p-2 rounded-xl"
+              className="p-2 rounded-xl w-80 h-48"
               src={blog.eyecatch.url}
               alt="blog image"
               width={300}
@@ -51,6 +60,24 @@ export default async function Page() {
             </div>
           </a>
         ))}
+      </div>
+      <div className="m-8">
+        <Pagination>
+          <PaginationContent>
+            <PaginationItem>
+              <PaginationPrevious href="#" />
+            </PaginationItem>
+            <PaginationItem>
+              <PaginationLink href="#">1</PaginationLink>
+            </PaginationItem>
+            <PaginationItem>
+              <PaginationEllipsis />
+            </PaginationItem>
+            <PaginationItem>
+              <PaginationNext href="#" />
+            </PaginationItem>
+          </PaginationContent>
+        </Pagination>
       </div>
     </div>
   );
