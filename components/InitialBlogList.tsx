@@ -11,7 +11,7 @@ const microCmsClient = createClient({
 });
 
 async function getBlogs(title: ArticleTitles) {
-  const queries = title === "新着記事一覧" ? { limit: 3 } : {};
+  const queries = title === "新着記事" ? { limit: 5 } : {};
   const data = await microCmsClient.get({
     endpoint: "blogs",
     queries,
@@ -48,7 +48,7 @@ export default async function InitialBlogList(articleDescription: {
   return (
     <>
       <ArticleDescription title={articleDescription.title} />
-      {articleDescription.title !== "新着記事一覧" && (
+      {articleDescription.title !== "新着記事" && (
         <Input
           className="flex mx-auto w-1/2 mb-14"
           type="text"

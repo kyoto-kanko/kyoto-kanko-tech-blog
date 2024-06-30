@@ -6,7 +6,7 @@ function Home() {
     <div>
       <Terminals />
       <div>
-        <InitialBlogList title="新着記事一覧" />
+        <InitialBlogList title="新着記事" />
       </div>
     </div>
   );
