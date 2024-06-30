@@ -11,7 +11,7 @@ export default function SearchBlogList() {
   const [keyword, setKeyword] = useState("");
   const [isLoading, setIsLoading] = useState(false);
 
-  const handleSearch = async (event) => {
+  const handleSearch = async (event: React.FormEvent<HTMLFormElement>) => {
     setIsLoading(true);
     event.preventDefault();
     const client = createClient({
