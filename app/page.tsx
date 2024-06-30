@@ -1,12 +1,12 @@
 import Terminals from "../components/Terminals";
-import ArticleDescription from "../components/ArticleDescription";
+import InitialBlogList from "../components/InitialBlogList";
 
 function Home() {
   return (
     <div>
       <Terminals />
       <div>
-        <ArticleDescription title="技術記事一覧" />
+        <InitialBlogList title="新着記事一覧" />
       </div>
     </div>
   );
