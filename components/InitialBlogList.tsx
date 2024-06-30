@@ -48,13 +48,6 @@ export default async function InitialBlogList(articleDescription: {
   return (
     <>
       <ArticleDescription title={articleDescription.title} />
-      {articleDescription.title !== "新着記事" && (
-        <Input
-          className="flex mx-auto w-1/2 mb-14"
-          type="text"
-          placeholder="キーワードを入力して検索"
-        />
-      )}
       <div className="flex items-center flex-col">
         {blogs.map((blog: Blog) => (
           <a
