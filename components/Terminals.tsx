@@ -20,14 +20,14 @@ const Terminal = () => {
   }, [index]);
 
   return (
-    <div className="mx-auto my-16">
+    <div className="mx-auto my-16 xl:block hidden">
       <div className="bg-gray-800 text-white font-mono p-2 rounded-t-lg flex justify-between items-center">
         <div className="flex space-x-2">
           <div className="w-3 h-3 bg-red-500 rounded-full"></div>
           <div className="w-3 h-3 bg-yellow-500 rounded-full"></div>
           <div className="w-3 h-3 bg-green-500 rounded-full"></div>
         </div>
-        <div className="text-sm">kyoto-kanko -- -zsh -- 80x24</div>
+        <div className="text-sm">猫と京都と酒</div>
         <div></div>
       </div>
       <div className="bg-black text-green-500 font-mono p-4 rounded-b-lg whitespace-pre text-xs text-center h-72">
