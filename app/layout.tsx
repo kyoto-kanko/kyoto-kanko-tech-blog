@@ -14,7 +14,7 @@ export default function RootLayout({
       </head>
       <body className="font-mono">
         <Header />
-        <main className="pt-16 container mx-auto">{children}</main>
+        <main className="pt-16 sm:container mx-auto">{children}</main>
         <Footer />
       </body>
     </html>

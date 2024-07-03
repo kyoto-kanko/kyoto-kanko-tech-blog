@@ -20,15 +20,16 @@ function Header() {
       <div className="flex justify-around w-1/3">
         <a href="/tech" className="flex items-center">
           <GrNotes />
-          技術記事
+          <span className="hidden sm:block"> 技術記事</span>
         </a>
 
         <a href="https://github.com/kyoto-kanko" className="flex items-center">
           <FaGithub />
-          Github
+          <span className="hidden sm:block">Github</span>
         </a>
         <a href="https://x.com/kyoto_kanko_jp" className="flex items-center">
-          <FaXTwitter />X
+          <FaXTwitter />
+          <span className="hidden sm:block">X</span>
         </a>
       </div>
     </header>
