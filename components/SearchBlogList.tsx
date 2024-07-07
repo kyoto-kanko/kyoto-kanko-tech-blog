@@ -3,8 +3,8 @@ import Image from "next/image";
 import React, { useState } from "react";
 import ArticleDescription from "./ArticleDescription";
 import { Input } from "./ui/input";
-import { createClient } from "microcms-js-sdk";
 import { Loader2 } from "lucide-react";
+import search from "../app/actions/search";
 
 export default function SearchBlogList() {
   const [blogs, setBlogs] = useState([]);
@@ -14,19 +14,10 @@ export default function SearchBlogList() {
   const handleSearch = async (event: React.FormEvent<HTMLFormElement>) => {
     setIsLoading(true);
     event.preventDefault();
-    const client = createClient({
-      serviceDomain: "il685n1911",
-      apiKey: "BOe3OF4nQZ2kPoGFebS4GvAr0t7ewnvDXALm",
-    });
 
     try {
-      const data = await client.get({
-        endpoint: "blogs",
-        queries: {
-          q: keyword,
-        },
-      });
-      setBlogs(data.contents);
+      const data = await search(keyword);
+      setBlogs(data);
     } finally {
       setIsLoading(false);
     }
@@ -63,6 +54,11 @@ export default function SearchBlogList() {
           onChange={(e) => setKeyword(e.target.value)}
         />
       </form>
+      {isLoading && (
+        <p className="flex justify-center mt-24">
+          <Loader2 className="animate-spin" />
+        </p>
+      )}
       <div className="flex items-center flex-col m-4">
         {blogs.map((blog: Blog) => (
           <a
