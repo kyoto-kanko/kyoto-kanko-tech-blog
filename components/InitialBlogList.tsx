@@ -1,18 +1,12 @@
-import { createClient } from "microcms-js-sdk";
 import Image from "next/image";
 import React from "react";
 import ArticleDescription from "./ArticleDescription";
-import { Input } from "@/components/ui/input";
 import { ArticleTitles } from "../types/ArticleTitles";
-
-const microCmsClient = createClient({
-  serviceDomain: "il685n1911",
-  apiKey: "BOe3OF4nQZ2kPoGFebS4GvAr0t7ewnvDXALm",
-});
+import client from "../lib/apiClient";
 
 async function getBlogs(title: ArticleTitles) {
   const queries = title === "新着記事" ? { limit: 5 } : {};
-  const data = await microCmsClient.get({
+  const data = await client.get({
     endpoint: "blogs",
     queries,
   });
