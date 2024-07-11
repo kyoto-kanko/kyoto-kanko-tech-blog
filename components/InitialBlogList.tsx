@@ -1,18 +1,12 @@
-import { createClient } from "microcms-js-sdk";
 import Image from "next/image";
 import React from "react";
 import ArticleDescription from "./ArticleDescription";
-import { Input } from "@/components/ui/input";
 import { ArticleTitles } from "../types/ArticleTitles";
-
-const microCmsClient = createClient({
-  serviceDomain: "il685n1911",
-  apiKey: "BOe3OF4nQZ2kPoGFebS4GvAr0t7ewnvDXALm",
-});
+import client from "../lib/apiClient";
 
 async function getBlogs(title: ArticleTitles) {
   const queries = title === "新着記事" ? { limit: 5 } : {};
-  const data = await microCmsClient.get({
+  const data = await client.get({
     endpoint: "blogs",
     queries,
   });
@@ -34,10 +28,10 @@ const formatDate = (date: string): string => {
 interface Blog {
   id: string;
   title: string;
-  eyecatch: {
+  thumbnail: {
     url: string;
   };
-  tag: string[];
+  categories: string[];
   createdAt: string;
 }
 
@@ -57,7 +51,7 @@ export default async function InitialBlogList(articleDescription: {
           >
             <Image
               className="p-2 rounded-xl w-full h-auto  sm:w-80 sm:h-48"
-              src={blog.eyecatch.url}
+              src={blog.thumbnail.url}
               alt="blog image"
               width={500}
               height={500}
@@ -66,12 +60,12 @@ export default async function InitialBlogList(articleDescription: {
               <div>
                 <p className="text-2xl font-bold">{blog.title}</p>
                 <p className="flex mt-2 flex-wrap">
-                  {blog.tag.map((tag) => (
+                  {blog.categories.map((category) => (
                     <span
-                      key={tag}
+                      key={category}
                       className="border-2 border-blue-400 mr-2 mb-2 text-xs text-blue-400 px-2 py-1"
                     >
-                      {tag}
+                      {category}
                     </span>
                   ))}
                 </p>

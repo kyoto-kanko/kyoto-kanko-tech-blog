@@ -3,8 +3,8 @@ import Image from "next/image";
 import React, { useState } from "react";
 import ArticleDescription from "./ArticleDescription";
 import { Input } from "./ui/input";
-import { createClient } from "microcms-js-sdk";
 import { Loader2 } from "lucide-react";
+import search from "../app/actions/search";
 
 export default function SearchBlogList() {
   const [blogs, setBlogs] = useState([]);
@@ -14,19 +14,10 @@ export default function SearchBlogList() {
   const handleSearch = async (event: React.FormEvent<HTMLFormElement>) => {
     setIsLoading(true);
     event.preventDefault();
-    const client = createClient({
-      serviceDomain: "il685n1911",
-      apiKey: "BOe3OF4nQZ2kPoGFebS4GvAr0t7ewnvDXALm",
-    });
 
     try {
-      const data = await client.get({
-        endpoint: "blogs",
-        queries: {
-          q: keyword,
-        },
-      });
-      setBlogs(data.contents);
+      const data = await search(keyword);
+      setBlogs(data);
     } finally {
       setIsLoading(false);
     }
@@ -34,10 +25,10 @@ export default function SearchBlogList() {
   interface Blog {
     id: string;
     title: string;
-    eyecatch: {
+    thumbnail: {
       url: string;
     };
-    tag: string[];
+    categories: string[];
     createdAt: string;
   }
   const formatDate = (date: string): string => {
@@ -63,6 +54,11 @@ export default function SearchBlogList() {
           onChange={(e) => setKeyword(e.target.value)}
         />
       </form>
+      {isLoading && (
+        <p className="flex justify-center mt-24">
+          <Loader2 className="animate-spin" />
+        </p>
+      )}
       <div className="flex items-center flex-col m-4">
         {blogs.map((blog: Blog) => (
           <a
@@ -72,7 +68,7 @@ export default function SearchBlogList() {
           >
             <Image
               className="p-2 rounded-xl w-full h-auto  sm:w-80 sm:h-48"
-              src={blog.eyecatch.url}
+              src={blog.thumbnail.url}
               alt="blog image"
               width={500}
               height={500}
@@ -81,12 +77,12 @@ export default function SearchBlogList() {
               <div>
                 <p className="text-2xl font-bold">{blog.title}</p>
                 <p className="flex mt-2 flex-wrap">
-                  {blog.tag.map((tag) => (
+                  {blog.categories.map((category) => (
                     <span
-                      key={tag}
+                      key={category}
                       className="border-2 border-blue-400 mr-2 mb-2 text-xs text-blue-400 px-2 py-1"
                     >
-                      {tag}
+                      {category}
                     </span>
                   ))}
                 </p>
